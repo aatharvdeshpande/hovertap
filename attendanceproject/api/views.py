@@ -10,4 +10,5 @@ def Login(request):
     username = a['email']
     password = a['password']
     check = json.dumps(au.auth_user(username,password))
-    return  Response(check, status=status.HTTP_200_OK) 
+    data = au.auth_user(username,password)
+    return  Response(data, status=status.HTTP_200_OK) 
