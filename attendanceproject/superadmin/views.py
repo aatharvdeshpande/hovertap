@@ -36,6 +36,10 @@ def AdminHome(request):
                 return redirect('Login')
         
 
+def check(request):
+        return HttpResponse("HELLO PPL")
+
+@csrf_exempt
 def Login(request):
         try:
                 if request.method=="POST":
