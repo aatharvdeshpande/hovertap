@@ -14,6 +14,8 @@ from django.utils.decorators import method_decorator
 import superadmin.authenticate_user as au
 import json
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.sessions.models import Session
+Session.objects.all().delete()
 
 
 # Create your views here.
@@ -35,17 +37,26 @@ def AdminHome(request):
         return render(request, 'superadmin/index.html')
         
 
+def check(request):
+        return HttpResponse("HELLO PPL")
+
+@csrf_exempt
 def Login(request):
-        if request.method=="POST":
-                admin_name = request.POST.get("adminName")
-                admin_password = request.POST.get("adminPassword")
-                user_auth = au.auth_user(admin_name, admin_password)
-                if user_auth == True:
-                        request.session['user'] = admin_name
-                        return redirect('AdminHome')
-                else:
-                        return redirect('SignUp')
-        return render(request, 'superadmin/login.html')
+        try:
+                if request.method=="POST":
+                        admin_name = request.POST.get("adminName")
+                        admin_password = request.POST.get("adminPassword")
+                        user_auth = au.auth_user(admin_name, admin_password)
+                        if user_auth == True:
+                                request.session['user'] = admin_name
+                                return redirect('AdminHome')
+                        else:
+                                return redirect('SignUp')
+                return render(request, 'superadmin/login.html')
+        except Exception as e:
+                print("----------------------------------------------------------------------")
+                print(e)
+                return render(request, 'superadmin/login.html')
 
 
         
