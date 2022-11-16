@@ -19,10 +19,14 @@ def auth_user(user_name, user_password):
         else :    
             db_user_name = item["name"]
             db_user_password = item["password"]
+            data = {
+                "name":db_user_name,
+                "password":db_user_password
+            }
             
             result['success']=True
             result['message']=True
-            result['user']=item
+            result['user']=data
             collection.update_one({"name":user_name},{"$set":{"status":True}})
             return result                
 
