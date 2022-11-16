@@ -55,7 +55,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="login-form">
 							<!--begin::Form-->
 							<form  action="superadmin/Login/" method = "post" enctype="multipart/form-data">
-								{% csrf_token %}
+								{% comment %} {% csrf_token %} {% endcomment %}
 								<!--begin::Title-->
 								<div class="pb-5 pb-lg-15">
 									<h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Log In</h3>
