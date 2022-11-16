@@ -1,8 +1,13 @@
-from .models import Students
-from .seralizers import StudentSerializer
-from rest_framework.generics import ListAPIView
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+import api.authenticate_user as au
+import json
 # Create your views here.
-
-class StudentList(ListAPIView):
-    queryset = Students.objects.all()
-    serializer_class = StudentSerializer
+@api_view(['GET', 'POST'])
+def Login(request):
+    a = request.data
+    username = a['email']
+    password = a['password']
+    check = json.dumps(au.auth_user(username,password))
+    return  Response(check, status=status.HTTP_200_OK) 
