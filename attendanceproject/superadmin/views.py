@@ -28,13 +28,12 @@ collection = db['superadmin_createaccounts']
 
 # @au.entry_check
 def AdminHome(request):
-        # value = request.session.get('user')
-        # permission = au.check_if_allowed(value)
-        # if permission == True:
-        #         return render(request, 'superadmin/index.html')
-        # else:
-        #         return redirect('Login')
-        return render(request, 'superadmin/index.html')
+        value = request.session.get('user')
+        permission = au.check_if_allowed(value)
+        if permission == True:
+                return render(request, 'superadmin/index.html')
+        else:
+                return redirect('Login')
         
 
 def check(request):
