@@ -24,6 +24,7 @@ def auth_user(user_name, user_password):
                 "password":db_user_password
             }
             
+            result['status']=True
             result['data']=[data]
             collection.update_one({"name":user_name},{"$set":{"status":True}})
             return result                
