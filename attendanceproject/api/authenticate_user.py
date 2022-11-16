@@ -9,7 +9,7 @@ db = client['AttendanceProject']
     #     database_name = self.db
     
 def auth_user(user_name, user_password):
-    result = {'status': False,'data':[]}
+    result = {'success': False,'message':'Login Failed','user':[]}
 
     collection = db['api_student_table'] # collection created
     find_document = collection.find({"name":user_name,"password":user_password})     
@@ -19,13 +19,10 @@ def auth_user(user_name, user_password):
         else :    
             db_user_name = item["name"]
             db_user_password = item["password"]
-            data = {
-                "name":db_user_name,
-                "password":db_user_password
-            }
             
-            result['status']=True
-            result['data']=[data]
+            result['success']=True
+            result['message']=True
+            result['user']=item
             collection.update_one({"name":user_name},{"$set":{"status":True}})
             return result                
 
