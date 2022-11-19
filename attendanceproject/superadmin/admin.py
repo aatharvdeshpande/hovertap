@@ -19,7 +19,7 @@ class AdminAccount(admin.ModelAdmin):
 
 @admin.register(Course)
 class Course(admin.ModelAdmin):
-    list_display = ['course_id','course_name']
+    list_display = ['course_name','course_id']
 
 @admin.register(Year)
 class Year(admin.ModelAdmin):
@@ -27,8 +27,12 @@ class Year(admin.ModelAdmin):
 
 @admin.register(Subject)
 class Subject(admin.ModelAdmin):
-    list_display = ['subject_name']
+    list_display = ['subject_id','subject_name']
 
 @admin.register(Division)
 class Division(admin.ModelAdmin):
-    list_display = ['division_name']
+    list_display = ['division_id','division_name']
+
+@admin.register(ClassRoom)
+class Division(admin.ModelAdmin):
+    list_display = ['ClassRoom_id','course_name', 'course_year', 'course_division', 'course_subject']

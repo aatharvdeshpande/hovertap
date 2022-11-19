@@ -23,17 +23,24 @@ class AdminAccount(models.Model):
     loginStatus = models.BooleanField(default = False) 
 
 class Course(models.Model):
-    course_id = models.IntegerField(null = False, blank = False, unique = True, primary_key=True)
     course_name = models.CharField(max_length=50, null = False)
+    course_id = models.IntegerField(primary_key=True)
 
 class Year(models.Model):
-    year_id = models.IntegerField(null = False, blank = False, unique = True, primary_key=True)
+    year_id = models.IntegerField(primary_key=True)
     year_number = models.IntegerField(null = False, blank = False, unique = True)
     
 class Subject(models.Model):
-    # year_id = models.IntegerField(null = False, blank = False, unique = True, primary_key=True)
+    subject_id = models.IntegerField(primary_key=True)
     subject_name = models.CharField(max_length=50, null = False)
 
 class Division(models.Model):
-    # year_id = models.IntegerField(null = False, blank = False, unique = True, primary_key=True)
+    division_id = models.IntegerField(primary_key=True)
     division_name = models.CharField(max_length=50, null = False)
+
+class ClassRoom(models.Model):
+    ClassRoom_id = models.IntegerField(primary_key=True)
+    course_name = models.CharField(max_length=50, null = False)
+    course_year = models.CharField(max_length=50, null = False)
+    course_division = models.CharField(max_length=50, null = False)
+    course_subject = models.CharField(max_length=50, null = False)

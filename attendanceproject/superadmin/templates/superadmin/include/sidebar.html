@@ -1,0 +1,81 @@
+<div class="aside aside-left d-flex flex-column" id="kt_aside">
+    <!--begin::Brand-->
+    <div class="aside-brand d-flex flex-column align-items-center flex-column-auto py-9">
+        <!--begin::Logo-->
+        <div class="btn p-0 symbol symbol-40 symbol-success" href="?page=index" id="kt_quick_user_toggle">
+            <div class="symbol-label">
+                <img alt="Logo" src="/static/superadmin/media/svg/avatars/007-boy-2.svg" class="h-75 align-self-end">
+            </div>
+        </div>
+        <!--end::Logo-->
+    </div>
+    <!--end::Brand-->
+    <!--begin::Nav Wrapper-->
+    <div class="aside-nav d-flex flex-column align-items-center flex-column-fluid pb-10 scroll ps" style="overflow: hidden;">
+        <!--begin::Nav-->
+        <ul class="nav flex-column">
+            <!--begin::Item-->
+            <li class="nav-item mb-2" title="Dashboard" >
+                <a href="{% url 'AdminHome' %}" class="nav-link btn btn-icon btn-lg btn-borderless active">
+                    <span class="svg-icon svg-icon-xxl">
+                        <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24"></rect>
+                                <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"></rect>
+                                <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3"></path>
+                            </g>
+                        </svg>
+                        <!--end::Svg Icon-->
+                    </span>
+                </a>
+            </li>
+            <!--end::Item-->
+           
+            <!--begin::Item-->
+            <li class="nav-item mb-2"  title="Records" >
+                <a href="{% url 'Records' %}" class="nav-link btn btn-icon btn-lg btn-borderless"  role="tab">
+                    <span class="svg-icon svg-icon-xxl">
+                        <!--begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg-->
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24"></rect>
+                                <rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5"></rect>
+                                <rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5"></rect>
+                                <rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5"></rect>
+                                <rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5"></rect>
+                            </g>
+                        </svg>
+                        <!--end::Svg Icon-->
+                    </span>
+                </a>
+            </li>
+            <!--end::Item-->
+        </ul>
+        <!--end::Nav-->
+    
+        <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+    <!--end::Nav Wrapper-->
+    <!--begin::Footer-->
+    <div class="aside-footer d-flex flex-column align-items-center flex-column-auto py-8">
+        <!--begin::Quick Panel-->
+        <a href="{% url 'Login' %}" class="btn btn-icon btn-lg btn-borderless mb-1"  title="Logout" data-original-title="Logout">
+            <span class="svg-icon svg-icon-xxl">
+                <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_302_88)">
+                    <path d="M14.336 0C18.739 0 22.8158 1.953 25.5192 5.2416C25.5962 5.33482 25.6537 5.44258 25.6882 5.55847C25.7227 5.67435 25.7336 5.796 25.7201 5.91617C25.7067 6.03634 25.6692 6.15257 25.6099 6.25796C25.5506 6.36334 25.4707 6.45572 25.375 6.5296C25.1801 6.68234 24.9334 6.75316 24.6872 6.72702C24.441 6.70088 24.2147 6.57985 24.0562 6.3896C22.8741 4.95771 21.3889 3.80608 19.7077 3.0178C18.0266 2.22951 16.1914 1.82423 14.3346 1.8312C7.4536 1.8312 1.8746 7.28 1.8746 14C1.8746 20.72 7.4536 26.1688 14.3346 26.1688C16.2181 26.176 18.0791 25.759 19.7795 24.9488C21.4799 24.1386 22.9761 22.956 24.157 21.4886C24.3128 21.2964 24.5373 21.1724 24.7829 21.1429C25.0286 21.1133 25.2761 21.1806 25.473 21.3304C25.5696 21.403 25.6505 21.4943 25.7111 21.5988C25.7717 21.7034 25.8107 21.819 25.8257 21.9389C25.8407 22.0588 25.8315 22.1805 25.7986 22.2967C25.7656 22.413 25.7097 22.5214 25.634 22.6156C22.9348 25.9896 18.8034 28 14.336 28C6.4162 28 0 21.7322 0 14C0 6.2678 6.4176 0 14.336 0ZM23.9372 10.024L27.7256 13.8138C28.0924 14.1792 28.0994 14.7658 27.7424 15.1242L24.0408 18.8244C23.8652 18.9963 23.6284 19.0914 23.3827 19.0887C23.137 19.0861 22.9023 18.986 22.7304 18.8104C22.6432 18.7253 22.5735 18.6239 22.5255 18.5119C22.4775 18.3999 22.4521 18.2795 22.4507 18.1577C22.4492 18.0358 22.4718 17.9149 22.5172 17.8018C22.5626 17.6887 22.6298 17.5857 22.715 17.4986L24.8808 15.3328H10.4468C10.3251 15.3343 10.2043 15.3118 10.0913 15.2666C9.97826 15.2213 9.87526 15.1543 9.78815 15.0693C9.70105 14.9843 9.63155 14.8829 9.58362 14.771C9.53569 14.6591 9.51026 14.5389 9.5088 14.4172C9.5088 13.9104 9.9288 13.5002 10.4468 13.5002H24.8234L22.6422 11.319C22.4664 11.1473 22.3661 10.9127 22.3632 10.667C22.3603 10.4213 22.4551 10.1844 22.6268 10.0086C22.8026 9.83691 23.0395 9.74208 23.2852 9.74497C23.5309 9.74785 23.7655 9.84822 23.9372 10.024V10.024Z" fill="#CA8ABB"></path>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_302_88">
+                    <rect width="28" height="28" fill="white"></rect>
+                    </clipPath>
+                    </defs>
+                    </svg>
+                <!--end::Svg Icon-->
+            </span>
+        </a>
+        <!--end::Quick Panel-->
+    </div>
+    <!--end::Footer-->
+</div>

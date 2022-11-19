@@ -51,3 +51,13 @@ def add_course(course_id, course_name):
         db = client['AttendanceProject']
         collection = db['course_table']
         pass
+
+def add_classroom(sql):
+    db = client['AttendanceProject']
+    collection = db['superadmin_classroom']
+    collection.insert_one(sql)
+
+def update_classroom(classroom_id,course_name,course_year,course_division,course_subject):
+    db = client['AttendanceProject']
+    collection = db['superadmin_classroom']
+    collection.update_one({"ClassRoom_id":int(classroom_id)},{"$set":{"course_name":course_name, "course_year":course_year,"course_division":course_division,"course_subject":course_subject}}) 

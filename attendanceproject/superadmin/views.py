@@ -120,21 +120,32 @@ def ForgotPassword(request):
 
 def AddCourse(request):
         if request.method=="POST":
-               course_id = request.POST.get("course_id")
-               course_name = request.POST.get("course_name")
-               data = Course.objects.create(course_id=course_id, course_name=course_name)
-               data.save()
-               return redirect('AddCourse')
+                course_method = request.POST.get("method")
+                if course_method == "insert":
+                        course_name = request.POST.get("course_name")
+                        count = len(Course.objects.all()) + 1
+                        data = Course.objects.create(course_id=count,course_name=course_name)
+                        data.save()
+                        return redirect('ViewCourse')
+                elif course_method == "update":
+                        course_name = request.POST.get("course_name")
+                        course_id = request.POST.get("course_id")
+                        record = Course.objects.get(course_id = course_id)
+                        record.course_name = course_name
+                        record.save()
+                        return redirect('ViewCourse')
         #        course_details = Course.objects.all()
         #        context = {'details':course_details}
-               
-        else:
-               return render(request, 'superadmin/addcourse.html')
 
-def course(request):
+def ViewCourse(request):
         course_details = Course.objects.all()
-        context = {'details':course_details}
+        context = {'details':course_details, 'method':"insert"}
         return render(request, 'superadmin/course.html',context)
+
+def EditCourse(request,id):
+        course_details = Course.objects.get(course_id = id)
+        context = {'details':course_details, 'method':"update"}
+        return render(request, 'superadmin/EditCourse.html', context)
 
 def ShowAllCourse(request):
         if request.method=="POST":
@@ -189,11 +200,11 @@ def AddYear(request):
         
 
 
-def division(request):
-        course_details = Course.objects.all()
-        year_details = Year.objects.all()
-        division_name = Division.objects.all()
-        context = {'details':course_details,'details2':year_details,'details3':division_name} 
+def Division(request):
+        # course_details = Course.objects.all()
+        # year_details = Year.objects.all()
+        # division_name = Division.objects.all()
+        # context = {'details':course_details,'details2':year_details,'details3':division_name} 
         return render(request, 'superadmin/division.html')
 
 def AddDivision(request):
@@ -212,10 +223,61 @@ def AddDivision(request):
 
 
 
-def subject(request):
+def Subject(request):
+        classroom_details = ClassRoom.objects.all()
         course_details = Course.objects.all()
-        context = {'details':course_details} 
+        context = {'details':course_details, 'method':"insert",'classroom':classroom_details} 
         return render(request, 'superadmin/subject.html',context)
 
 def AddSubject(request):
-        return render(request, 'superadmin/addsubject.html')
+        if request.method=="POST":
+                course_method = request.POST.get("method")
+                if course_method == "insert":
+                        count = len(ClassRoom.objects.all()) + 1
+                        course_name = request.POST.get("course")
+                        course_year = request.POST.get("year")
+                        course_division = request.POST.get("division")
+                        subjects = request.POST.get("subject")
+                        course_subject = [x.strip() for x in subjects.split(',')][:-1]
+                        sql = {
+                                'ClassRoom_id':count,
+                                'course_name':course_name,
+                                'course_year':course_year,
+                                'course_division':course_division,
+                                'course_subject':course_subject
+                        }
+                        store = au.add_classroom(sql)
+                        # data = ClassRoom.objects.create(ClassRoom_id = count,course_name=course_name,course_year=course_year,course_division=course_division,course_subject=course_subject)
+                        # data.save()
+                        return redirect('Subject')
+                elif course_method == "update":
+                        classroom_id = request.POST.get("classroom_id")
+                        course_name = request.POST.get("course")
+                        course_year = request.POST.get("year")
+                        course_division = request.POST.get("division")
+                        subjects = request.POST.get("subject")
+                        course_subject = [x.strip() for x in subjects.split(',')][:-1]      
+                        sql = {
+                                'course_name':course_name,
+                                'course_year':course_year,
+                                'course_division':course_division,
+                                'course_subject':course_subject 
+                        }
+                        where={
+                            "ClassRoom_id":classroom_id,    
+                        }
+                        update = au.update_classroom(classroom_id,course_name,course_year,course_division,course_subject)
+                        return redirect('Subject') 
+
+def EditSubject(request,id):
+        classroom_details = ClassRoom.objects.filter(ClassRoom_id = id)
+        course_details = Course.objects.all()
+        context = {'details':course_details, 'method':"update",'classroom':classroom_details}
+        return render(request, 'superadmin/EditSubject.html', context)
+
+def Records(request):
+        return render(request, 'superadmin/records.html')
+def Upload(request):
+        return render(request, 'superadmin/Upload.html')
+def Year(request):
+        return render(request, 'superadmin/Year.html')

@@ -1,0 +1,31 @@
+{% extends 'superadmin/base.html' %}
+{% block title %}Course{% endblock title %}
+{% block content %}
+<h2 class="mt-5">Course Details</h2>
+<div class="row mt-5">
+    
+    <div class="col-md-6">
+        
+        <form action = "{% url 'AddCourse' %}" class="form" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="course">Course </label>
+                <input type="text" name="course_name" id="course" placeholder="Enter course" value = "{{details.course_name}}" class="form-control" />
+
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" name="method" value="{{method}}"/>
+                <input type="hidden" name="course_id" value="{{details.course_id}}"/>
+                <input type="submit" name="submit" id="submit" value="Update" class="btn btn-primary" />
+
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script> 
+    $('#example').DataTable();
+</script>
+{% endblock scripts %}
