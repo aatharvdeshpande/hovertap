@@ -64,7 +64,7 @@ def MakeAccounts(CsvFile):
         db = client['AttendanceProject']
         collection = db['superadmin_createaccounts']
         data = []
-        base = 'attendanceproject/media/'
+        base = 'media/'
         FileWithLocation = base+str(CsvFile)
         # FileWithLocation = '../attendanceproject/media/'+str(CsvFile)
         # C:\Users\Harsh\Desktop\\hovertap\attendanceproject\media\FYBTECHDATA_vU0v8V6.csv
