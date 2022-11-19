@@ -65,6 +65,9 @@ def MakeAccounts(CsvFile):
         collection = db['superadmin_createaccounts']
         data = []
         FileWithLocation = '../attendanceproject'+MEDIA_URL+str(CsvFile)
+        # FileWithLocation = '../attendanceproject/media/'+str(CsvFile)
+        # C:\Users\Harsh\Desktop\\hovertap\attendanceproject\media\FYBTECHDATA_vU0v8V6.csv
+        print(FileWithLocation)
         with open(FileWithLocation) as f:
                 reader = csv.reader(f)
                 for i in reader:
