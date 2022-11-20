@@ -22,5 +22,7 @@ urlpatterns = [
     path('check/', views.check, name = "check"),
     path('ViewCourse/', views.ViewCourse, name = "ViewCourse"),
     path("EditCourse/<int:id>", views.EditCourse, name='EditCourse'),
-    path("EditSubject/<int:id>", views.EditSubject, name='EditSubject')
+    path("EditSubject/<int:id>", views.EditSubject, name='EditSubject'),
+# Index page URLs
+    path('', views.Home, name = "Home"), 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

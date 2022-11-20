@@ -103,6 +103,11 @@ def ShowAccounts(request):
                 return redirect('Login')
 
 
+# @au.entry_check
+def Home(request):
+        return render(request, 'home/home.html')                
+
+
 
 
 
