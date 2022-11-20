@@ -44,3 +44,5 @@ class ClassRoom(models.Model):
     course_year = models.CharField(max_length=50, null = False)
     course_division = models.CharField(max_length=50, null = False)
     course_subject = models.CharField(max_length=50, null = False)
+    file_csv_student = models.FileField(null = True)
+    file_csv_teacher = models.FileField(null = True)

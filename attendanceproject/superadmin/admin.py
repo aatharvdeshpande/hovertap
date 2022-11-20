@@ -34,5 +34,5 @@ class Division(admin.ModelAdmin):
     list_display = ['division_id','division_name']
 
 @admin.register(ClassRoom)
-class Division(admin.ModelAdmin):
-    list_display = ['ClassRoom_id','course_name', 'course_year', 'course_division', 'course_subject']
+class ClassRoom(admin.ModelAdmin):
+    list_display = ['ClassRoom_id','course_name', 'course_year', 'course_division', 'course_subject','file_csv_student','file_csv_teacher']

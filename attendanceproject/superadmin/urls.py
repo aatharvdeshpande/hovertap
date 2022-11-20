@@ -21,7 +21,6 @@ urlpatterns = [
     path('Subject/', views.Subject, name = "Subject"),
     path('check/', views.check, name = "check"),
     path('ViewCourse/', views.ViewCourse, name = "ViewCourse"),
-    # path('EditCourse/', views.EditCourse, name = "EditCourse"),
     path("EditCourse/<int:id>", views.EditCourse, name='EditCourse'),
     path("EditSubject/<int:id>", views.EditSubject, name='EditSubject')
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

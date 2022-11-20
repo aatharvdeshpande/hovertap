@@ -53,8 +53,6 @@ def Login(request):
                                 return redirect('SignUp')
                 return render(request, 'superadmin/login.html')
         except Exception as e:
-                print("----------------------------------------------------------------------")
-                print(e)
                 return render(request, 'superadmin/login.html')
 
 
@@ -66,9 +64,6 @@ def MakeAccounts(CsvFile):
         data = []
         base = 'media/'
         FileWithLocation = base+str(CsvFile)
-        # FileWithLocation = '../attendanceproject/media/'+str(CsvFile)
-        # C:\Users\Harsh\Desktop\\hovertap\attendanceproject\media\FYBTECHDATA_vU0v8V6.csv
-        print(FileWithLocation)
         with open(FileWithLocation) as f:
                 reader = csv.reader(f)
                 for i in reader:
@@ -212,10 +207,7 @@ def AddDivision(request):
                division_name = request.POST.get("division_name")
                data = Division.objects.create(division_name=division_name)
                data.save()
-               return redirect('AddYear')
-        #        course_details = Course.objects.all()
-        #        context = {'details':course_details}
-               
+               return redirect('AddYear')              
         else:
                return render(request, 'superadmin/adddivision.html')
         
@@ -239,6 +231,14 @@ def AddSubject(request):
                         course_division = request.POST.get("division")
                         subjects = request.POST.get("subject")
                         course_subject = [x.strip() for x in subjects.split(',')][:-1]
+                        file_csv_student = request.FILES["file_csv_student"]
+                        file_csv_teacher = request.FILES["file_csv_teacher"]
+                        data = ClassRoom.objects.create(ClassRoom_id=count,course_name=course_name,course_year=course_year,course_division=course_division,course_subject=subjects,file_csv_student=file_csv_student, file_csv_teacher= file_csv_teacher)
+                        data.save()
+                        student_list = au.student_details(file_csv_student)
+                        teacher_list = au.teacher_details(file_csv_teacher)
+                        where = {'ClassRoom_id':count}
+                        store1 = au.update_s_t(where,student_list,teacher_list)
                         sql = {
                                 'ClassRoom_id':count,
                                 'course_name':course_name,
@@ -246,9 +246,7 @@ def AddSubject(request):
                                 'course_division':course_division,
                                 'course_subject':course_subject
                         }
-                        store = au.add_classroom(sql)
-                        # data = ClassRoom.objects.create(ClassRoom_id = count,course_name=course_name,course_year=course_year,course_division=course_division,course_subject=course_subject)
-                        # data.save()
+
                         return redirect('Subject')
                 elif course_method == "update":
                         classroom_id = request.POST.get("classroom_id")
