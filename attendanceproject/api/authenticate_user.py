@@ -30,6 +30,32 @@ def auth_user(user_name, user_password):
             return result                
 
     return result
+
+def update_user_details(student_prn,fname,lname,phone_number,personal_email):
+    result = {'success': False,'message':'Data Not Found','user':[]}
+
+    collection = db['api_student_table'] # collection created
+
+    find_document = collection.find({"student_prn":student_prn})     
+    for item in find_document:
+        if item['college_email'] == None and item['password'] == None:
+            return result
+        else :    
+            collection.update_one({"student_prn":student_prn},{"$set":{"fname":fname, "lname": lname, "phone_number": phone_number, "personal_email": personal_email}});
+            data = {
+                "student_prn":item["student_prn"],
+                "college_email":item["college_email"],
+                "password":item["password"],
+                "status":item["status"],
+            }
+            
+            result['success']=True
+            result['message']="Data Successfully Stored."
+            result['user']=data
+            return result                
+
+    return result
+
     
 def check_if_allowed(user_name):
     permission_allowed = False
