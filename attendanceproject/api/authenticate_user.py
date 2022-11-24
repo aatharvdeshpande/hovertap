@@ -55,7 +55,80 @@ def update_user(student_prn,fname,lname,phone_number,personal_email):
 
     return result
 
+def markAttendance(student_prn,nfcid,date,time):
+    result = {'success': False,'message':'Data Not Found','user':[]}
     
+
+    collection = db['superadmin_classroom'] # collection created
+    markcollection = db['api_attendance_request'] # collection created
+    find_document = collection.find({"students":{"$elemMatch":{"student_prn":student_prn}}})
+    for item in find_document:
+        if item['ClassRoom_id'] == None:
+            result['message']="Student is not allowed to classroom."
+            return result
+        else : 
+            classRoomId = item['ClassRoom_id']   
+            tnfcid_list = nfcid.split('_')
+            tnfcid = tnfcid_list[0]
+            markcollection.update_one({"nfcid":{"$regex": tnfcid}, "date":date, "classroom_id": classRoomId}, {"$push":{ "student_list": { "$each":[ { "student_prn": student_prn, "nfcid":nfcid } ] } }}) 
+            
+            markData = markcollection.find({"nfcid": {"$regex": tnfcid}, "date":date,"classroom_id":classRoomId,"student_list":{"$elemMatch": {"student_prn":student_prn}}})
+            for row in markData:
+                
+                result['success']=True
+                result['message']="Attendance marked for "+row['subject']
+                return result                
+    return result
+
+
+#Teacher Function 
+def auth_teacher(user_name, user_password):
+    result = {'success': False,'message':'Login Failed','user':[]}
+
+    collection = db['api_teacher_table'] # collection created
+    find_document = collection.find({"college_email":user_name,"password":user_password})     
+    for item in find_document:
+        if item['college_email'] == None and item['password'] == None:
+            return result
+        else :    
+            data = {
+                "teacher_prn":item["teacher_prn"],
+                "college_email":item["college_email"],
+                "password":item["password"],
+                "status":item["status"],
+            }
+            
+            result['success']=True
+            result['message']="Login Successfull"
+            result['user']=data
+            return result                
+
+    return result
+
+def update_teacher(teacher_prn,fname,lname,phone_number,personal_email):
+    result = {'success': False,'message':'Data Not Found','user':[]}
+
+    collection = db['api_teacher_table'] # collection created
+    collection.update_one({"teacher_prn":teacher_prn},{"$set":{"fname":fname, "lname": lname, "phone_number": phone_number, "personal_email": personal_email, 'status': True}});
+    find_document = collection.find({"teacher_prn":teacher_prn})     
+    for item in find_document:
+        if item['college_email'] == None and item['password'] == None:
+            return result
+        else :    
+            data = {
+                "teacher_prn":item["teacher_prn"],
+                "college_email":item["college_email"],
+                "password":item["password"],
+                "status":item["status"],
+            }
+            
+            result['success']=True
+            result['message']="Data Successfully Stored."
+            result['user']=data
+            return result                
+
+    return result
+
 def check_if_allowed(user_name):
     permission_allowed = False
     collection = db['superadmin_adminaccount']
