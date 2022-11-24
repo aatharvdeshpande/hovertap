@@ -31,7 +31,7 @@ def markattendance(request):
     date = a['date']
     time = a['time']
     data = au.markAttendance(student_prn,nfcid,date,time)
-    return  Response(data, status=status.HTTP_200_OK)
+    return  Response(a, status=status.HTTP_200_OK)
 
 
 # Teacher API
@@ -46,10 +46,10 @@ def TeacherLogin(request):
 @api_view(['GET', 'POST'])
 def update_teacher_details(request):
     a = request.data
-    student_prn = a['teacher_prn']
+    teacher_prn = a['teacher_prn']
     fname = a['fname']
     lname = a['lname']
     phone_number = a['phone_number']
     personal_email = a['personal_email']
-    data = au.update_teacher(student_prn,fname,lname,phone_number,personal_email)
+    data = au.update_teacher(teacher_prn,fname,lname,phone_number,personal_email)
     return  Response(data, status=status.HTTP_200_OK)         
