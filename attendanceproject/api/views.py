@@ -31,7 +31,7 @@ def markattendance(request):
     date = a['date']
     time = a['time']
     data = au.markAttendance(student_prn,nfcid,date,time)
-    return  Response(data, status=status.HTTP_200_OK)
+    return  Response(a, status=status.HTTP_200_OK)
 
 
 # Teacher API
