@@ -11,3 +11,11 @@ def Login(request):
     password = a['password']
     data = au.auth_user(username,password)
     return  Response(data, status=status.HTTP_200_OK) 
+
+@api_view(['GET', 'POST'])
+def check_user_details(request):
+    a = request.data
+    username = a['email']
+    password = a['password']
+    data = au.auth_user(username,password)
+    return  Response(data, status=status.HTTP_200_OK) 

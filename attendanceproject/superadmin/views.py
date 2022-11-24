@@ -284,3 +284,62 @@ def Upload(request):
         return render(request, 'superadmin/Upload.html')
 def Year(request):
         return render(request, 'superadmin/Year.html')
+
+
+# GENERATING STUDENT ACCOUNT 
+
+def make_student_account(CsvFile):
+        db = client['AttendanceProject']
+        collection = db['api_student_table']
+        data = []
+        base = 'media/'
+        FileWithLocation = base+str(CsvFile)
+        with open(FileWithLocation) as f:
+                reader = csv.reader(f)
+                for i in reader:
+                        dict1 = {'student_prn':i[0],'fname':"",'lname':"",'phone_number':"",'college_email':i[1],'password':i[0],'personal_email':"",'status':False}
+                        data.append(dict1)
+        collection.insert_many(data)
+
+def student_account_generations(request):
+        value = request.session.get('user')
+        permission = au.check_if_allowed(value)
+        if permission == True:
+                redirect('UploadFiles')
+                if request.method=="POST":
+                        file_csv = request.FILES["student_account"]
+                        data = StudentAccounts.objects.create(student_account_file = file_csv)
+                        data.save()
+                        make_student_account(file_csv) 
+                return render(request, 'superadmin/Upload.html')
+        else:
+             return redirect('Login')   
+
+# GENERATING TEACHER ACCOUNTS
+
+def make_teacher_account(CsvFile):
+        db = client['AttendanceProject']
+        collection = db['api_teacher_table']
+        data = []
+        base = 'media/'
+        FileWithLocation = base+str(CsvFile)
+        with open(FileWithLocation) as f:
+                reader = csv.reader(f)
+                for i in reader:
+                        dict1 = {'teacher_prn':i[0],'fname':"",'lname':"",'phone_number':"",'college_email':i[1],'password':i[0],'personal_email':"",'status':False}
+                        data.append(dict1)
+        collection.insert_many(data)
+
+def teacher_account_generations(request):
+        value = request.session.get('user')
+        permission = au.check_if_allowed(value)
+        if permission == True:
+                redirect('UploadFiles')
+                if request.method=="POST":
+                        file_csv = request.FILES["teacher_account"]
+                        data = TeacherAccounts.objects.create(teacher_account_file = file_csv)
+                        data.save()
+                        make_teacher_account(file_csv) 
+                return render(request, 'superadmin/UploadTeacher.html')
+        else:
+             return redirect('Login') 

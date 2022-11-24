@@ -12,22 +12,21 @@ def auth_user(user_name, user_password):
     result = {'success': False,'message':'Login Failed','user':[]}
 
     collection = db['api_student_table'] # collection created
-    find_document = collection.find({"name":user_name,"password":user_password})     
+    find_document = collection.find({"college_email":user_name,"password":user_password})     
     for item in find_document:
-        if item['name'] == None and item['password'] == None:
+        if item['college_email'] == None and item['password'] == None:
             return result
         else :    
-            db_user_name = item["name"]
-            db_user_password = item["password"]
             data = {
-                "name":db_user_name,
-                "password":db_user_password
+                "student_prn":item["student_prn"],
+                "college_email":item["college_email"],
+                "password":item["password"],
+                "status":item["status"],
             }
             
             result['success']=True
             result['message']="Login Successfull"
             result['user']=data
-            collection.update_one({"name":user_name},{"$set":{"status":True}})
             return result                
 
     return result

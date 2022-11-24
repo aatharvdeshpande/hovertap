@@ -46,3 +46,9 @@ class ClassRoom(models.Model):
     course_subject = models.CharField(max_length=50, null = False)
     file_csv_student = models.FileField(null = True)
     file_csv_teacher = models.FileField(null = True)
+
+class StudentAccounts(models.Model):
+    student_account_file = models.FileField(null = True)
+
+class TeacherAccounts(models.Model):
+    teacher_account_file = models.FileField(null = True)

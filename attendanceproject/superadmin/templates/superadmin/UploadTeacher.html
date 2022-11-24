@@ -6,16 +6,16 @@
  <div class="card card-custom gutter-b">
     <div class="card-header">
         <div class="card-title">
-            <h3 class="card-label">Generate Student Accounts</h3>
+            <h3 class="card-label">Generate Teacher Accounts</h3>
         </div>
     </div>
     <!--begin::Form-->
-    <form action= "{% url 'student_account_generations' %}", method = "POST", enctype="multipart/form-data">
+    <form action= "{% url 'teacher_account_generations' %}", method = "POST", enctype="multipart/form-data">
         {% csrf_token %}
         {{form.docfile}}
         <div class="form-group">
-            <label for="subject">UPLOAD STUDENT CSV FILE [PRN, EMAIL]</label>
-            <input type ="file" name = "student_account" placeholder="Enter CSV file ONLY" class="form-control"></input>
+            <label for="subject">UPLOAD TEACHER CSV FILE [PRN, EMAIL]</label>
+            <input type ="file" name = "teacher_account" placeholder="Enter CSV file ONLY" class="form-control"></input>
         </div> 
        
         <div class="card-footer">
