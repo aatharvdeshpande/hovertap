@@ -31,7 +31,7 @@ def auth_user(user_name, user_password):
 
     return result
 
-def update_user_details(student_prn,fname,lname,phone_number,personal_email):
+def update_user(student_prn,fname,lname,phone_number,personal_email):
     result = {'success': False,'message':'Data Not Found','user':[]}
 
     collection = db['api_student_table'] # collection created
