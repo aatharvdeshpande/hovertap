@@ -35,13 +35,12 @@ def update_user(student_prn,fname,lname,phone_number,personal_email):
     result = {'success': False,'message':'Data Not Found','user':[]}
 
     collection = db['api_student_table'] # collection created
-
+    collection.update_one({"student_prn":student_prn},{"$set":{"fname":fname, "lname": lname, "phone_number": phone_number, "personal_email": personal_email, 'status': True}});
     find_document = collection.find({"student_prn":student_prn})     
     for item in find_document:
         if item['college_email'] == None and item['password'] == None:
             return result
         else :    
-            collection.update_one({"student_prn":student_prn},{"$set":{"fname":fname, "lname": lname, "phone_number": phone_number, "personal_email": personal_email, 'status': True}});
             data = {
                 "student_prn":item["student_prn"],
                 "college_email":item["college_email"],
