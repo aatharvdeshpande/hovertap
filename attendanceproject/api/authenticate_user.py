@@ -255,7 +255,7 @@ def get_subject(teacher_prn):
     studentcollection = db['superadmin_classroom'] # collection created
     find_document = studentcollection.find({"teachers": { "$elemMatch": { "teacher_prn": teacher_prn } }})
     for item in find_document:
-        if item['teacher_prn'] == None:
+        if item['ClassRoom_id'] == None:
             result['message']="No Data Found For Subject !!!"
             return result
         else : 
