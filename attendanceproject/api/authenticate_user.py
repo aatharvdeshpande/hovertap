@@ -137,8 +137,10 @@ def get_user_timetable(student_prn,time,day):
             result['message']="No Timetable Found !!!"
             return result
         else:
-            data = {}
-            data.append(item)
+            data = {
+                day:[]
+            }
+            data[day].append(item[day])
             result['success']=True
             result['message']="Data Found Successfully"
             result['user']=data
