@@ -128,6 +128,23 @@ def update_password(student_prn,password):
                 return result                
     return result    
 
+def get_user_timetable(student_prn,time,day):
+    result = {'success': False,'message':'Facing some error.','user':[]}
+    collection = db['api_student_timetable']
+    find_document = collection.find({day: { "$elemMatch" : { "time": time } }, "students":student_prn},{day:1})
+    for item in find_document:
+        if item['_id'] == None:
+            result['message']="No Timetable Found !!!"
+            return result
+        else:
+            data = {}
+            data.append(item)
+            result['success']=True
+            result['message']="Data Found Successfully"
+            result['user']=data
+            return result
+    return result        
+
 #Teacher Function 
 def auth_teacher(user_name, user_password):
     result = {'success': False,'message':'Login Failed','user':[]}
@@ -176,7 +193,7 @@ def update_teacher(teacher_prn,fname,lname,phone_number,personal_email):
 
     return result
 
-def getteacherprofile(teacher_prn):
+def getteacherprofiles(teacher_prn):
     result = {'success': False,'message':'Data Not Found','user':[]}
     
 

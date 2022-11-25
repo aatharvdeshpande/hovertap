@@ -59,6 +59,14 @@ def update_password(request):
     data = au.update_password(student_prn,password)
     return  Response(data, status=status.HTTP_200_OK)     
 
+@api_view(['GET', 'POST'])
+def getUserTimeTable(request):
+    a = request.data
+    student_prn = a['student_prn']
+    time = a['time']
+    day = a['day']
+    data = au.get_user_timetable(student_prn,time,day)
+    return  Response(data, status=status.HTTP_200_OK) 
 
 
 # Teacher API
@@ -85,7 +93,7 @@ def update_teacher_details(request):
 def getteacherprofile(request):
     a = request.data
     teacher_prn = a['teacher_prn']
-    data = au.getteacherprofile(teacher_prn)
+    data = au.getteacherprofiles(teacher_prn)
     return  Response(data, status=status.HTTP_200_OK)  
 
 @api_view(['GET', 'POST'])

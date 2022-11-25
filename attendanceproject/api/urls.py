@@ -8,6 +8,7 @@ urlpatterns = [
     path('getprofile/', views.getprofile),
     path('updateprofile/', views.update_user_profile),
     path('updatepassword/', views.update_password),
+    path('getusertimetable/', views.getUserTimeTable),
     # Teacher APi
     path('teacher/login/', views.TeacherLogin),
     path('teacher/verify/', views.update_teacher_details),
