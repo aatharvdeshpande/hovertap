@@ -176,6 +176,55 @@ def update_teacher(teacher_prn,fname,lname,phone_number,personal_email):
 
     return result
 
+def getteacherprofile(teacher_prn):
+    result = {'success': False,'message':'Data Not Found','user':[]}
+    
+
+    collection = db['superadmin_classroom'] # collection created 
+    studentcollection = db['api_teacher_table'] # collection created
+    find_document = collection.find({"teachers":{"$elemMatch":{"teacher_prn":teacher_prn}}})
+    for item in find_document:
+        if item['ClassRoom_id'] == None:
+            result['message']="Student is not allowed to classroom."
+            return result
+        else : 
+            course_name = item['course_name']            
+            markData = studentcollection.find({"teacher_prn": teacher_prn})
+            for row in markData:
+                data = {
+                    "course_name": course_name,
+                    "teacher_prn": row['teacher_prn'],
+                    "fname": row['fname'],
+                    "lname": row['lname'],
+                    "phone_number": row['phone_number'],
+                    "college_email": row['college_email'],
+                    "personal_email": row['personal_email'],
+                    "status": row['status'],
+                }
+                result['success']=True
+                result['message']="Data Found Successfully"
+                result['user']=data
+                return result                
+    return result
+
+def update_teacher_password(teacher_prn,password):
+    result = {'success': False,'message':'Facing some error.','user':[]}
+    
+
+    studentcollection = db['api_teacher_table'] # collection created
+    find_document = studentcollection.find({"teacher_prn": teacher_prn})
+    for item in find_document:
+        if item['teacher_prn'] == None:
+            result['message']="No User Found !!!"
+            return result
+        else : 
+                studentcollection.update_one({"teacher_prn": teacher_prn},{"$set":{"password": password}})
+                result['success']=True
+                result['message']="Password updated successfully"
+                return result                
+    return result    
+
+
 def check_if_allowed(user_name):
     permission_allowed = False
     collection = db['superadmin_adminaccount']

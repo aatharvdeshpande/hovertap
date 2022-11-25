@@ -80,3 +80,29 @@ def update_teacher_details(request):
     personal_email = a['personal_email']
     data = au.update_teacher(teacher_prn,fname,lname,phone_number,personal_email)
     return  Response(data, status=status.HTTP_200_OK)         
+
+@api_view(['GET', 'POST'])
+def getteacherprofile(request):
+    a = request.data
+    teacher_prn = a['teacher_prn']
+    data = au.getteacherprofile(teacher_prn)
+    return  Response(data, status=status.HTTP_200_OK)  
+
+@api_view(['GET', 'POST'])
+def update_teacher_profile(request):
+    a = request.data
+    teacher_prn = a['teacher_prn']
+    fname = a['fname']
+    lname = a['lname']
+    phone_number = a['phone_number']
+    personal_email = a['personal_email']
+    data = au.update_teacher(teacher_prn,fname,lname,phone_number,personal_email)
+    return  Response(data, status=status.HTTP_200_OK)     
+
+@api_view(['GET', 'POST'])
+def update_teacher_password(request):
+    a = request.data
+    teacher_prn = a['teacher_prn']
+    password = a['password']
+    data = au.update_teacher_password(teacher_prn,password)
+    return  Response(data, status=status.HTTP_200_OK)

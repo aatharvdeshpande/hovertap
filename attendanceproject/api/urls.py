@@ -11,4 +11,7 @@ urlpatterns = [
     # Teacher APi
     path('teacher/login/', views.TeacherLogin),
     path('teacher/verify/', views.update_teacher_details),
+    path('teacher/getprofile/', views.getteacherprofile),
+    path('teacher/updateprofile/', views.update_teacher_profile),
+    path('teacher/updatepassword/', views.update_teacher_password),
 ]
