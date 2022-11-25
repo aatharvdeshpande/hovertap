@@ -9,7 +9,13 @@ db = client['AttendanceProject']
     # def __init__(self,client,db):
     #     server_url = self.client
     #     database_name = self.db
-    
+
+def get_out(name):
+    collection = db['superadmin_adminaccount']
+    if name is not None:
+        print(name+"helo")
+        collection.update_one({"adminName":name},{"$set":{"loginStatus":False}})
+
 def auth_user(user_name, user_password):
     final_output = False
     collection = db['superadmin_adminaccount']

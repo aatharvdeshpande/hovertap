@@ -7,7 +7,7 @@
                 <span class="menu-text">Dashboard</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+            {% comment %} <div class="menu-submenu menu-submenu-classic menu-submenu-left">
                 <ul class="menu-subnav">
                     <li class="menu-item menu-item-active" aria-haspopup="true">
                         <a href="index.html" class="menu-link">
@@ -22,7 +22,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> {% endcomment %}
         </li>
         <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
             <a href="javascript:;" class="menu-link menu-toggle">
@@ -60,14 +60,14 @@
                                     </a>
                                 </li>
 
-                                <li class="menu-item" aria-haspopup="true">
+                                {% comment %} <li class="menu-item" aria-haspopup="true">
                                     <a href="{% url 'student_account_generations' %}" class="menu-link">
                                         <i class="menu-bullet menu-bullet-dot">
                                             <span></span>
                                         </i>
                                         <span class="menu-text">Teacher</span>
                                     </a>
-                                </li>
+                                </li> {% endcomment %}
                             </div>	
                     </li>
                     
@@ -94,7 +94,7 @@
                                     </a>
                                 </li>
 
-                                <li class="menu-item" aria-haspopup="true">
+                                {% comment %} <li class="menu-item" aria-haspopup="true">
                                     <a href="{% url 'Year' %}" class="menu-link">
                                         <i class="menu-bullet menu-bullet-dot">
                                             <span></span>
@@ -110,7 +110,7 @@
                                         </i>
                                         <span class="menu-text">Division</span>
                                     </a>
-                                </li>
+                                </li> {% endcomment %}
 
                                 <li class="menu-item" aria-haspopup="true">
                                     <a href="{% url 'Subject' %}" class="menu-link">

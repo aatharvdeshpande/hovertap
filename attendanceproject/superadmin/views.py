@@ -25,6 +25,7 @@ client = pymongo.MongoClient("mongodb+srv://harsh:harsh@attendanceproject.rrlaxi
 db = client['AttendanceProject']
 collection = db['superadmin_createaccounts']
 
+name = ""
 
 # @au.entry_check
 def AdminHome(request):
@@ -359,3 +360,8 @@ def student_account_generations(request):
 #                 return render(request, 'superadmin/UploadTeacher.html')
 #         else:
 #              return redirect('Login') 
+
+def Logout(request):
+        print(name)
+        au.get_out(name)
+        return redirect('Home')

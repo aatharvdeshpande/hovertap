@@ -33,7 +33,7 @@
             <!--end::Item-->
            
             <!--begin::Item-->
-            <li class="nav-item mb-2"  title="Records" >
+            {% comment %} <li class="nav-item mb-2"  title="Records" >
                 <a href="{% url 'Records' %}" class="nav-link btn btn-icon btn-lg btn-borderless"  role="tab">
                     <span class="svg-icon svg-icon-xxl">
                         <!--begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg-->
@@ -49,7 +49,7 @@
                         <!--end::Svg Icon-->
                     </span>
                 </a>
-            </li>
+            </li> {% endcomment %}
             <!--end::Item-->
         </ul>
         <!--end::Nav-->
@@ -59,7 +59,7 @@
     <!--begin::Footer-->
     <div class="aside-footer d-flex flex-column align-items-center flex-column-auto py-8">
         <!--begin::Quick Panel-->
-        <a href="{% url 'Login' %}" class="btn btn-icon btn-lg btn-borderless mb-1"  title="Logout" data-original-title="Logout">
+        <a href="{% url 'Logout' %}" class="btn btn-icon btn-lg btn-borderless mb-1"  title="Logout" data-original-title="Logout">
             <span class="svg-icon svg-icon-xxl">
                 <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
