@@ -80,6 +80,36 @@ def markAttendance(student_prn,nfcid,date,time):
                 return result                
     return result
 
+def getuserprofile(student_prn):
+    result = {'success': False,'message':'Data Not Found','user':[]}
+    
+
+    collection = db['superadmin_classroom'] # collection created 
+    studentcollection = db['api_student_table'] # collection created
+    find_document = collection.find({"students":{"$elemMatch":{"student_prn":student_prn}}})
+    for item in find_document:
+        if item['ClassRoom_id'] == None:
+            result['message']="Student is not allowed to classroom."
+            return result
+        else : 
+            course_name = item['course_name']            
+            markData = studentcollection.find({"student_prn": student_prn})
+            for row in markData:
+                data = {
+                    "course_name": course_name,
+                    "student_prn": row['student_prn'],
+                    "fname": row['fname'],
+                    "lname": row['lname'],
+                    "phone_number": row['phone_number'],
+                    "college_email": row['college_email'],
+                    "personal_email": row['personal_email'],
+                    "status": row['status'],
+                }
+                result['success']=True
+                result['message']="Data Found Successfully"
+                result['user']=data
+                return result                
+    return result
 
 #Teacher Function 
 def auth_teacher(user_name, user_password):

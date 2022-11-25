@@ -33,6 +33,13 @@ def markattendance(request):
     data = au.markAttendance(student_prn,nfcid,date,time)
     return  Response(data, status=status.HTTP_200_OK)
 
+@api_view(['GET', 'POST'])
+def getprofile(request):
+    a = request.data
+    student_prn = a['student_prn']
+    data = au.getuserprofile(student_prn)
+    return  Response(data, status=status.HTTP_200_OK)    
+
 
 # Teacher API
 @api_view(['GET', 'POST'])
