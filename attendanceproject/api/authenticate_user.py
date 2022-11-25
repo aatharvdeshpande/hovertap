@@ -141,7 +141,6 @@ def get_user_timetable(student_prn,time,day):
                 "course_name":item['course_name'],
                 "year":item['year'],
                 "panel":item['panel'],
-                day:[]
             }
             data[day].append(item[day])
             result['success']=True
