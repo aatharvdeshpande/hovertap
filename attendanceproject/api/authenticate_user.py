@@ -131,13 +131,16 @@ def update_password(student_prn,password):
 def get_user_timetable(student_prn,time,day):
     result = {'success': False,'message':'Facing some error.','user':[]}
     collection = db['api_student_timetable']
-    find_document = collection.find({day: { "$elemMatch" : { "time": time } }, "students":student_prn},{day:1})
+    find_document = collection.find({day: { "$elemMatch" : { "time": time } }, "students":student_prn},{day:1,"course_name": 1, "year": 1, "panel": 1})
     for item in find_document:
         if item['_id'] == None:
             result['message']="No Timetable Found !!!"
             return result
         else:
             data = {
+                "course_name":item['course_name'],
+                "year":item['year'],
+                "panel":item['panel'],
                 day:[]
             }
             data[day].append(item[day])
