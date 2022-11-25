@@ -38,7 +38,18 @@ def getprofile(request):
     a = request.data
     student_prn = a['student_prn']
     data = au.getuserprofile(student_prn)
-    return  Response(data, status=status.HTTP_200_OK)    
+    return  Response(data, status=status.HTTP_200_OK)  
+
+@api_view(['GET', 'POST'])
+def update_user_profile(request):
+    a = request.data
+    student_prn = a['student_prn']
+    fname = a['fname']
+    lname = a['lname']
+    phone_number = a['phone_number']
+    personal_email = a['personal_email']
+    data = au.update_user(student_prn,fname,lname,phone_number,personal_email)
+    return  Response(data, status=status.HTTP_200_OK)      
 
 
 # Teacher API
