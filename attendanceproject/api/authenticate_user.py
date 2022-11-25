@@ -265,8 +265,15 @@ def get_subject(teacher_prn):
                     subjects = row['teacher_subject']
 
             subjectList = subjects.split(",")
+            subList = []
+            for sub in subjectList:
+                testData = {
+                    "subject":sub
+                }
+                subList.append(testData)
+
             data={
-                "subjects": subjectList
+                "subjects": subList
             }
             result['success']=True
             result['message']="Data Found Successfully"
