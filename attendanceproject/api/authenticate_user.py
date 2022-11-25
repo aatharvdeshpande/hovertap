@@ -256,7 +256,7 @@ def get_subject(teacher_prn):
     find_document = studentcollection.find({"teachers": { "$elemMatch": { "teacher_prn": teacher_prn } }})
     for item in find_document:
         if item['teacher_prn'] == None:
-            result['message']="No Data Found !!!"
+            result['message']="No Data Found For Subject !!!"
             return result
         else : 
             subjects = ""
