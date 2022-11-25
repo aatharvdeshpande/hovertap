@@ -15,4 +15,5 @@ urlpatterns = [
     path('teacher/getprofile/', views.getteacherprofile),
     path('teacher/updateprofile/', views.update_teacher_profile),
     path('teacher/updatepassword/', views.update_teacher_password),
+    path('teacher/getsubject/', views.getsubject),
 ]

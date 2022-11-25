@@ -114,3 +114,10 @@ def update_teacher_password(request):
     password = a['password']
     data = au.update_teacher_password(teacher_prn,password)
     return  Response(data, status=status.HTTP_200_OK)
+
+@api_view(['GET', 'POST'])
+def getsubject(request):
+    a = request.data
+    teacher_prn = a['teacher_prn']
+    data = au.get_subject(teacher_prn)
+    return  Response(data, status=status.HTTP_200_OK)

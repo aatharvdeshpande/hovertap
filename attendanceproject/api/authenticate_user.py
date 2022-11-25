@@ -246,7 +246,33 @@ def update_teacher_password(teacher_prn,password):
                 result['success']=True
                 result['message']="Password updated successfully"
                 return result                
-    return result    
+    return result   
+
+def get_subject(teacher_prn):
+    result = {'success': False,'message':'Facing some error.','user':[]}
+    
+
+    studentcollection = db['superadmin_classroom'] # collection created
+    find_document = studentcollection.find({"teachers": { "$elemMatch": { "teacher_prn": teacher_prn } }})
+    for item in find_document:
+        if item['teacher_prn'] == None:
+            result['message']="No Data Found !!!"
+            return result
+        else : 
+            subjects = ""
+            for row in item['teachers']:
+                if(row['teacher_prn'] == teacher_prn):
+                    subjects = row['teacher_subject']
+
+            subjectList = subjects.split(",")
+            data={
+                "subjects": subjectList
+            }
+            result['success']=True
+            result['message']="Data Found Successfully"
+            result['user']=data
+            return result                
+    return result
 
 
 def check_if_allowed(user_name):
