@@ -3,7 +3,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>App micron</title>
+<title>HOVERTAP</title>
+<link rel="icon" href="\static\home\images\HTLOGO.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -46,12 +47,12 @@
 					</div>
 					<nav>
 						<ul>
-							<li><a href="#features" title="">Features</a></li>
+							<li><a href="#features" title="">Home</a></li>
 							<li><a href="#about" title="">About</a></li>
 							<li><a href="#services" title="">Services</a></li>
-							<li><a href="#pricing" title="">Pricing</a></li>
-							<li><a href="#testimonial" title="">Testimonials</a></li>
-							<li><a href="#news" title="">News</a></li>
+							{% comment %} <li><a href="#pricing" title="">Pricing</a></li> {% endcomment %}
+							<li><a href="{% url 'Login' %}" title="">Login</a></li>
+							{% comment %} <li><a href="#news" title="">News</a></li> {% endcomment %}
 						</ul>
 					</nav>
 				</div><!--header-data end-->
@@ -76,7 +77,7 @@
 				<li><a href="#" title=""><i class="mdi mdi-instagram"></i></a></li>
 			</ul><!--mb-social-links end-->
 			<div class="mb-copyright-text">
-				<p>© AppMicron 2018. All Rights Reseverd Design by Paul Murren</p>
+				{% comment %} <p>© AppMicron 2018. All Rights Reseverd Design by Paul Murren</p> {% endcomment %}
 			</div><!--mb-copyright-text end-->
 		</div><!--responsive-mobile-menu end-->
 
@@ -88,14 +89,14 @@
 						<div class="col-lg-5">
 							<div class="banner-text">
 								<h3>Introducing</h3>
-								<h2>APPMicron</h2>
-								<p>Ut non quam risus. Praesent venenatis ali- <br />quam rhoncus. Mauris sit amet rhoncus risus,<br /> vel ullamcorper leo.</p>
+								<h2>HoverTap</h2>
+								<h3>Tap and Go</h3>
 								<a href="#" title="">explore</a>
 							</div><!--banner-text end-->
 						</div>
 						<div class="col-lg-6">
 							<div class="banner-imgs">
-								<img src="http://via.placeholder.com/826x949" alt="">
+								<img src="\static\home\images\landingpage1.svg" alt="">
 							</div><!--banner-imgs end-->
 						</div>
 					</div>
@@ -111,22 +112,22 @@
 	    				<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 	    					<div class="feature">
 	    						<div class="feature-icon">
-	    							<span><i class="mdi mdi-account-convert"></i></span>
+	    							<span><i class="mdi mdi-wifi"></i></span>
 	    						</div><!--feature-icon end-->
 	    						<div class="feature-info">
-	    							<h3>Account Convert</h3>
-	    							<p>Maecenas ante sapien, semper nec ullamcorper a, tristique ac dolor.</p>
+	    							<h3>Contactless</h3>
+	    							<p>Just hover or tap</p>
 	    						</div><!--feature-info end-->
 	    					</div><!--feature end-->
 	    				</div>
 	    				<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 	    					<div class="feature">
 	    						<div class="feature-icon">
-	    							<span><i class="mdi mdi-alarm-check"></i></span>
+	    							<span><i class="mdi mdi-nfc"></i></span>
 	    						</div><!--feature-icon end-->
 	    						<div class="feature-info">
-	    							<h3>Allarm Bell</h3>
-	    							<p>Maecenas ante sapien, semper nec ullamcorper a, tristique ac dolor.</p>
+	    							<h3>NFC</h3>
+	    							<p>Near Field Communication</p>
 	    						</div><!--feature-info end-->
 	    					</div><!--feature end-->
 	    				</div>
@@ -137,18 +138,18 @@
 	    						</div><!--feature-icon end-->
 	    						<div class="feature-info">
 	    							<h3>Android</h3>
-	    							<p>Maecenas ante sapien, semper nec ullamcorper a, tristique ac dolor.</p>
+	    							<p>Works on android devices supporting NFC</p>
 	    						</div><!--feature-info end-->
 	    					</div><!--feature end-->
 	    				</div>
 	    				<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 	    					<div class="feature">
 	    						<div class="feature-icon">
-	    							<span><i class="mdi mdi-apple"></i></span>
+	    							<span><i class="mdi mdi-chart-line"></i></span>
 	    						</div><!--feature-icon end-->
 	    						<div class="feature-info">
-	    							<h3>iOS</h3>
-	    							<p>Maecenas ante sapien, semper nec ullamcorper a, tristique ac dolor.</p>
+	    							<h3>Powerful Analytics</h3>
+	    							<p>Visualization of data</p>
 	    						</div><!--feature-info end-->
 	    					</div><!--feature end-->
 	    				</div>
@@ -164,7 +165,7 @@
 	    			<div class="row">
 	    				<div class="col-lg-4">
 	    					<div class="about-img">
-	    						<img src="http://via.placeholder.com/486x854" alt="">
+	    						<img src="\static\home\images\landingpage2.svg" alt="">
 	    					</div><!--srvc-img end-->
 	    				</div>
 	    				<div class="col-lg-8">
@@ -204,7 +205,7 @@
 	    	</div>
 	    </section>
 
-	    <section class="services" id="services">
+	    {% comment %} <section class="services" id="services">
 	    	<div class="fixed-bg bg4"></div>
 	    	<div class="custom-container">
 	    		<div class="services-sec">
@@ -256,7 +257,7 @@
 	    			</div>
 	    		</div><!--services-sec end-->
 	    	</div>
-	    </section>
+	    </section> {% endcomment %}
 
 	    <section class="pricing" id="pricing">
 	    	<div class="fixed-bg bg5"></div>
@@ -362,28 +363,28 @@
 				<div class="testimonial-nav">
 					<div class="user-info">
 						<img src="http://via.placeholder.com/65x65" alt="">
-						<h3>Omar Hampton</h3>
-						<span>Designer</span>
+						<h3>Vandana Jagtap</h3>
+						<span>Mentor</span>
 					</div><!--user-info end-->
 					<div class="user-info">
 						<img src="http://via.placeholder.com/65x65" alt="">
-						<h3>Omar Hampton</h3>
-						<span>Designer</span>
+						<h3>Harsh Chauhan</h3>
+						<span>Student</span>
 					</div><!--user-info end-->
 					<div class="user-info">
 						<img src="http://via.placeholder.com/65x65" alt="">
-						<h3>Omar Hampton</h3>
-						<span>Designer</span>
+						<h3>Abhishek Panat</h3>
+						<span>Student</span>
 					</div><!--user-info end-->
 					<div class="user-info">
 						<img src="http://via.placeholder.com/65x65" alt="">
-						<h3>Omar Hampton</h3>
-						<span>Designer</span>
+						<h3>Atharva Deshpande</h3>
+						<span>Student</span>
 					</div><!--user-info end-->
 					<div class="user-info">
 						<img src="http://via.placeholder.com/65x65" alt="">
-						<h3>Omar Hampton</h3>
-						<span>Designer</span>
+						<h3>Vaishnavi Jadhav </h3>
+						<span>Student</span>
 					</div><!--user-info end-->
 					<div class="user-info">
 						<img src="http://via.placeholder.com/65x65" alt="">
