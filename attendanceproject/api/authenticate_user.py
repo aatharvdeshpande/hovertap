@@ -111,6 +111,23 @@ def getuserprofile(student_prn):
                 return result                
     return result
 
+def update_password(student_prn,password):
+    result = {'success': False,'message':'Facing some error.','user':[]}
+    
+
+    studentcollection = db['api_student_table'] # collection created
+    find_document = studentcollection.find({"student_prn": student_prn})
+    for item in find_document:
+        if item['student_prn'] == None:
+            result['message']="No User Found !!!"
+            return result
+        else : 
+                studentcollection.update_one({"student_prn": student_prn},{"$set":{"password": password}})
+                result['success']=True
+                result['message']="Password updated successfully"
+                return result                
+    return result    
+
 #Teacher Function 
 def auth_teacher(user_name, user_password):
     result = {'success': False,'message':'Login Failed','user':[]}

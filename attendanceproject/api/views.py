@@ -49,7 +49,16 @@ def update_user_profile(request):
     phone_number = a['phone_number']
     personal_email = a['personal_email']
     data = au.update_user(student_prn,fname,lname,phone_number,personal_email)
-    return  Response(data, status=status.HTTP_200_OK)      
+    return  Response(data, status=status.HTTP_200_OK)     
+
+@api_view(['GET', 'POST'])
+def update_password(request):
+    a = request.data
+    student_prn = a['student_prn']
+    password = a['password']
+    data = au.update_password(student_prn,password)
+    return  Response(data, status=status.HTTP_200_OK)     
+
 
 
 # Teacher API
