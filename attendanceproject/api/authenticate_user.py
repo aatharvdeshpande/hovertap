@@ -141,8 +141,11 @@ def get_user_timetable(student_prn,time,day):
                 "course_name":item['course_name'],
                 "year":item['year'],
                 "panel":item['panel'],
+                day:[]
             }
-            data[day].append(item[day])
+            for row in item[day]:
+                data[day].append(row)
+                
             result['success']=True
             result['message']="Data Found Successfully"
             result['user']=data
