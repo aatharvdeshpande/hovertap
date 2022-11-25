@@ -36,3 +36,11 @@ class Division(admin.ModelAdmin):
 @admin.register(ClassRoom)
 class ClassRoom(admin.ModelAdmin):
     list_display = ['ClassRoom_id','course_name', 'course_year', 'course_division', 'course_subject','file_csv_student','file_csv_teacher']
+    
+@admin.register(StudentAccounts)
+class StudentAccounts(admin.ModelAdmin):
+    list_display = ['field_check','student_account_file']
+
+@admin.register(TeacherAccounts)
+class TeacherAccounts(admin.ModelAdmin):
+    list_display = ['id', 'teacher_account_file']

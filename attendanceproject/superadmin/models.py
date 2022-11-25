@@ -48,7 +48,9 @@ class ClassRoom(models.Model):
     file_csv_teacher = models.FileField(null = True)
 
 class StudentAccounts(models.Model):
+    field_check = models.CharField(max_length=50, null = False, blank = True)
     student_account_file = models.FileField(null = True)
 
 class TeacherAccounts(models.Model):
+    id = models.IntegerField(primary_key=True)
     teacher_account_file = models.FileField(null = True)

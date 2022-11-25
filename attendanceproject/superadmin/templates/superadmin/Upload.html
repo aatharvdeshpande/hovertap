@@ -14,8 +14,14 @@
         {% csrf_token %}
         {{form.docfile}}
         <div class="form-group">
-            <label for="subject">UPLOAD STUDENT CSV FILE [PRN, EMAIL]</label>
-            <input type ="file" name = "student_account" placeholder="Enter CSV file ONLY" class="form-control"></input>
+            <div class="form-group">
+                <label for="field_check">Select user</label>
+                <input type = "text" name = "field_check" id = "field_check" class = "form-control" placeholder = "Enter Teacher or Student">
+            </div>
+            <div class="form-group">
+                <label for="subject">UPLOAD STUDENT CSV FILE [PRN, EMAIL]</label>
+                <input type ="file" name = "student_account" placeholder="Enter CSV file ONLY" class="form-control"></input>
+            </div>
         </div> 
        
         <div class="card-footer">
