@@ -347,7 +347,8 @@ def display_count(teacher_prn,subject,date):
                 }
                 }
             }
-            ])             
+            ])         
+            total_present_students_count=0    
             for row in markDoc:  
                 total_present_students_count = row['student_count']
 
@@ -361,7 +362,7 @@ def display_count(teacher_prn,subject,date):
             result['message']="Data Found Successfully"
             result['user']=data
             return result  
-                          
+
     return result
 
 
