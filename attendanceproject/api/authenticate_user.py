@@ -304,6 +304,67 @@ def TmarkAttendance(teacher_prn,nfcid,subject,date,time):
                 return result                
     return result
 
+def display_count(teacher_prn,subject,date):
+    result = {'success': False,'message':'Data Not Found','user':[]}
+    
+
+    collection = db['superadmin_classroom'] # collection created
+    markcollection = db['api_attendance_request'] # collection created
+    find_document = collection.aggregate([
+      {
+        '$addFields': {
+          'size': {
+            '$size': '$students'
+          }
+        }
+      }, {
+        '$group': {
+          '_id': None, 
+          'students_count': {
+            '$sum': '$size'
+          }
+        }
+      }
+    ])
+    for item in find_document:
+        if item['students_count'] == None:
+            result['message']="No Student Found In Classroom"
+            return result
+        else : 
+            total_students_count = item['students_count']  
+            markDoc = markcollection.aggregate([{"$match": { "teacher_id": teacher_prn, "subject": subject, "date": date}},
+            {
+                '$addFields': {
+                'size': {
+                    '$size': '$student_list'
+                }
+                }
+            }, {
+                '$group': {
+                '_id': None, 
+                'student_count': {
+                    '$sum': '$size'
+                }
+                }
+            }
+            ])             
+            for row in markDoc:  
+                total_present_students_count = row['student_count']
+
+            data = {
+                "total": total_students_count,
+                "present": total_present_students_count,
+                "absent": (total_students_count - total_present_students_count)
+            }
+
+            result['success']=True
+            result['message']="Data Found Successfully"
+            result['user']=data
+            return result  
+                          
+    return result
+
+
 
 def check_if_allowed(user_name):
     permission_allowed = False

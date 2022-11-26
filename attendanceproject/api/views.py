@@ -131,4 +131,13 @@ def teachermarkattendance(request):
     date = a['date']
     time = a['time']
     data = au.TmarkAttendance(teacher_prn,nfcid,subject,date,time)
-    return  Response(data, status=status.HTTP_200_OK)    
+    return  Response(data, status=status.HTTP_200_OK)
+
+@api_view(['GET', 'POST'])
+def displayCount(request):
+    a = request.data
+    teacher_prn = a['teacher_prn']
+    subject = a['subject']
+    date = a['date']
+    data = au.display_count(teacher_prn,subject,date)
+    return  Response(data, status=status.HTTP_200_OK)        
