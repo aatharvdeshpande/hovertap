@@ -281,6 +281,29 @@ def get_subject(teacher_prn):
             return result                
     return result
 
+def TmarkAttendance(teacher_prn,nfcid,subject,date,time):
+    result = {'success': False,'message':'Data Not Found','user':[]}
+    
+
+    collection = db['superadmin_classroom'] # collection created
+    markcollection = db['api_attendance_request'] # collection created
+    find_document = collection.find({"teachers": { "$elemMatch": { "teacher_prn": teacher_prn , "teacher_subject": {"$regex": subject}} }})
+    for item in find_document:
+        if item['ClassRoom_id'] == None:
+            result['message']="Teacher is not allowed to classroom."
+            return result
+        else : 
+            classRoomId = item['ClassRoom_id']  
+            course_name = item['course_name']
+            markcollection.insert_one({"course": course_name, "classroom_id": classRoomId, "subject": subject, "nfc_id": nfcid, "teacherid": teacher_prn, "date": date, "time":time, "student_list":[]})
+            markDoc = markcollection.find({"course": course_name, "classroom_id": classRoomId, "subject": subject, "nfc_id": nfcid, "teacherid": teacher_prn, "date": date, "time":time})             
+            for row in markDoc:  
+
+                result['success']=True
+                result['message']="Session start for "+row['subject']
+                return result                
+    return result
+
 
 def check_if_allowed(user_name):
     permission_allowed = False

@@ -121,3 +121,14 @@ def getsubject(request):
     teacher_prn = a['teacher_prn']
     data = au.get_subject(teacher_prn)
     return  Response(data, status=status.HTTP_200_OK)
+
+@api_view(['GET', 'POST'])
+def teachermarkattendance(request):
+    a = request.data
+    teacher_prn = a['teacher_prn']
+    nfcid = a['nfcid']
+    subject = a['subject']
+    date = a['date']
+    time = a['time']
+    data = au.TmarkAttendance(teacher_prn,nfcid,subject,date,time)
+    return  Response(data, status=status.HTTP_200_OK)    
