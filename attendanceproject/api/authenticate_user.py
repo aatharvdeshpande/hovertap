@@ -311,6 +311,7 @@ def display_count(teacher_prn,subject,date):
     collection = db['superadmin_classroom'] # collection created
     markcollection = db['api_attendance_request'] # collection created
     find_document = collection.aggregate([
+      {"$match" : { "teachers": { "$elemMatch": { "teacher_prn": teacher_prn , "teacher_subject": {"$regex": subject} }}}},  
       {
         '$addFields': {
           'size': {
